@@ -15,6 +15,6 @@
 
 	function obInclude($path){
 		ob_start();
-		include $path;
+		include 'application/views/'.$this->path.'.php';
 		return ob_get_clean();
 	}

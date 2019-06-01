@@ -1,7 +1,7 @@
 <?php
 	namespace application\core;
 
-	use \application\core\lib\Asset;
+	use application\core\lib\Asset;
 
 	class View
 	{
@@ -10,23 +10,23 @@
 		public $asset;
 		public $layout = 'default';
 
-		public function __construct($route)
+		public function __construct()
 		{
-			$this->route = $route;
-			$this->path = ucfirst($route['controller']).DS.$route['action'];
+			// $this->route = $route;
+			// $this->path = ucfirst($route['controller']).DS.$route['action'];
 			$this->asset = new Asset;
 		}
 
-		public function render($title, $arr = [])
-		{
-			extract($arr);
+		// public function render($title, $arr = [])
+		// {
+		// 	extract($arr);
 
-			ob_start();
-			require_once('application/views/'.$this->path.'.php');
-			$content = ob_get_clean();
+		// 	ob_start();
+		// 	require_once('application/views/'.$this->path.'.php');
+		// 	$content = ob_get_clean();
 			
-			require_once('application/views/layouts/'.$this->layout.'.php');
-		}
+		// 	require_once('application/views/layouts/'.$this->layout.'.php');
+		// }
 
 		public static function errorResponse($type, $title)
 		{

@@ -8,8 +8,10 @@
 
 	    public function indexAction()
 	    {
+	    	$test = $this->load->controller('TestController');
+	    	$data['test'] = $test;
 	    	$this->view->asset->setMetaDesc('Тестовое описание');
 	    	$this->view->asset->setMetaKeys('ключ1, ключ2');
-	    	$this->view->render('Main');
+	    	$this->view->render('Main', $data);
 	    }
 	}
