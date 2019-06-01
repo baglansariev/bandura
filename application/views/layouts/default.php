@@ -15,13 +15,13 @@
 	<script type="text/javascript" src="/public/style/js/app.js"></script>
 </head>
 <body>
-	<? include 'application/layouts/helpers/header.php' ?>
+	<? include 'application/views/layouts/helpers/header.php' ?>
 	<main>
 		<div id="wrapper">
 			<?= $content ?>
 		</div>
 	</main>
-	<? include 'application/layouts/helpers/footer.php' ?>
+	<? include 'application/views/layouts/helpers/footer.php' ?>
 	<script type="text/javascript" src="/public/style/js/bootstrap/bootstrap.bundle.min.js"></script>
 	<script type="text/javascript" src="/public/style/js/bootstrap/bootstrap.js"></script>
 </body>

@@ -11,7 +11,7 @@
 
 	    public function __construct()
 	    {
-	        $this->routes = require_once('application/config/routes.php');
+	        $this->routes = require_once('application/core/config/routes.php');
 	        $this->uri = trim($_SERVER['REQUEST_URI'], '/');
 	    }
 

@@ -1,7 +1,7 @@
 <?php
 	namespace application\core;
 
-	use application\lib\Asset;
+	use \application\core\lib\Asset;
 
 	class View
 	{
@@ -25,14 +25,14 @@
 			require_once('application/views/'.$this->path.'.php');
 			$content = ob_get_clean();
 			
-			require_once('application/layouts/'.$this->layout.'.php');
+			require_once('application/views/layouts/'.$this->layout.'.php');
 		}
 
 		public static function errorResponse($type, $title)
 		{
 			http_response_code($type);
 			$content = obInclude('application/views/errors/'.$type.'.php');
-			require_once('application/layouts/default.php');
+			require_once('application/views/layouts/default.php');
 			exit();
 		}
 
