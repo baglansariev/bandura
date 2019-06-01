@@ -2,23 +2,25 @@
 	namespace application\core;
 
 	use application\core\View;
+	use application\core\lib\Request;
 
 	class Router
 	{
 		public $routes;
-		public $uri;
+		public $request;
 		protected $params = [];
 
 	    public function __construct()
 	    {
 	        $this->routes = require_once('application/core/config/routes.php');
-	        $this->uri = trim($_SERVER['REQUEST_URI'], '/');
+	        // $this->uri = trim($_SERVER['REQUEST_URI'], '/');
+	        $this->request = new Request;
 	    }
 
 	    public function match()
 	    {	
 	    	foreach ($this->routes as $key => $val) {
-	    		if(preg_match("#^$key$#", $this->uri)){
+	    		if(preg_match("#^$key$#", $this->request->getUri())){
 	    			$this->params = $val;
 	    			return true;
 	    		}
@@ -30,7 +32,7 @@
 	    	if($this->match()){
 	    		$path = 'application\controllers\\'.ucfirst($this->params['controller']).'Controller';
 	    		$action = $this->params['action'].'Action';
-	    		$controller = new $path($this->params, $this->uri);
+	    		$controller = new $path($this->params);
 	    		$controller->$action();
 	    	}
 	    	else{
